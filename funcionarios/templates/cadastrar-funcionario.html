@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+{{ form.media }}
+<div class="container card">
+	<div class="row">
+		<div class="card-body">
+			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
+			<div class="mx-auto">
+				<form method="POST">
+					<div class="row">
+						{% csrf_token %}
+						<div class="col-4">
+							
+							<label class="font-weight-bold mt-2">Nome&nbsp;<span class="text-danger">*</span></label>
+							{{form.nome}}
+						</div>					
+						<div class="col-2">
+							<label class="font-weight-bold mt-2">Nome de guerra&nbsp;<span class="text-danger">*</span></label>
+							{{form.nomeGuerra}}
+						</div>					
+											
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">CPF&nbsp;<span class="text-danger">*</span></label>
+							{{form.cpf}}
+						</div>					
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">RG&nbsp;<span class="text-danger">*</span></label>
+							{{form.rg}}
+						</div>					
+						<div class="col-6">
+							<label class="font-weight-bold mt-2">Endereço&nbsp;<span class="text-danger">*</span></label>
+							{{form.endereco}}
+						</div>
+						<div class="col-6">
+							<label class="font-weight-bold mt-2">Complemento</label>
+							{{form.complemento}}
+						</div>
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Bairro&nbsp;<span class="text-danger">*</span></label>
+							{{form.bairro}}
+						</div>
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Cidade&nbsp;<span class="text-danger">*</span></label>
+							{{form.cidade}}
+						</div>
+						<div class="col-1">
+							<label class="font-weight-bold mt-2">UF&nbsp;<span class="text-danger">*</span></label>
+							{{form.uf}}
+						</div>
+						
+						<div class="col-5">
+							<label class="font-weight-bold mt-2">Endereço de e-mail</label>
+							{{form.email}}
+						</div>
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Telefone</label>
+							{{form.telefone}}
+						</div>
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Data de nascimento&nbsp;<span class="text-danger">*</span></label>
+							{{form.nascimento}}
+						</div>
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Data de admissão&nbsp;<span class="text-danger">*</span></label>
+							{{form.dataAdmissao}}
+						</div>
+
+						<div class="col-3">
+							<label class="font-weight-bold mt-2">Status&nbsp;<span class="text-danger">*</span></label>
+							{{form.status}}
+						</div>
+
+						<div class=" col-12 alert alert-primary mt-3" role="alert">
+							Os campos marcados com <span class="text-danger font-weight-bold">*</span> são de preenchimento obrigatório.
+						</div>
+
+						<button type="submit" class="btn btn-success"><strong>Cadastrar funcionário</button>
+
+					</form>	
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

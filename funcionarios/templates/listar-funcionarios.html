@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<script type="text/javascript">  
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})  
+</script>
+
+
+<div class="container">
+	<div class="table-responsive table-bordered mx-auto card">
+		<div class="card-body">
+			<h3 class="font-weight-bold">Funcionários cadastrados</h3><hr/>
+		
+		<div class="alert alert-info mt-2" role="alert">
+
+			<span class="font-weight-bold">Quantidade total de funcionários cadastrados: {{ total_funcionarios }}&nbsp;&nbsp;&nbsp;
+			<span class="badge  badge-success">&nbsp;&nbsp;Ativos: {{funcionarios_ativos}}&nbsp;&nbsp;</span>
+			<span class="badge  badge-danger">Inativos: {{ funcionarios_inativos }}</span>
+		</span>
+
+		</div>
+		<table class="table table-sm table-hover table-light">				
+			<thead>
+				<tr>
+					<th class="text-center">Info</th>					
+					<th class="text-center">Matrícula</th>
+					<th class="text-center">Nome</th>
+					<th class="text-center">Nome de guerra</th>
+					<th class="text-center">Nascimento</th>
+					<th class="text-center">Data de admissão</th>
+					<th class="text-center">Status</th>
+				</tr>
+			</thead>
+			<tbody>            
+				<tr >
+					{% for funcionario in funcionarios %}  	
+					<td class="text-center">					
+						
+					<a href="{% url 'dados_funcionario' id=funcionario.id %}" class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Informações completas"><img src="/static/feather/list.svg" alt="check-circle" class="icone">
+					</a>
+
+
+					</td>						                   
+					<td class="text-center">{{ funcionario.id }}	</td>
+					<td class="text-center">{{ funcionario.nome|upper }}	</td>
+					<td class="text-center">{{ funcionario.nomeGuerra|upper }}	</td>
+					<td class="text-center">{{ funcionario.nascimento|date:"d/m/Y" }}	</td>
+					<td class="text-center">{{ funcionario.dataAdmissao|date:"d/m/Y" }}</td>
+					<td class="text-center">
+						{% if funcionario.status == "ATIVO" %}
+						<a class="badge badge-success mx-auto">&nbsp;&nbsp;{{ funcionario.status }}&nbsp;&nbsp;</a>
+						{% else %}
+						<a class="badge badge-danger mx-auto">{{ funcionario.status }}</a>
+						{% endif%}
+					</td>	
+				</tr>
+			</tbody>{% endfor %}
+		</table>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
