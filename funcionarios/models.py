@@ -44,7 +44,7 @@ class Funcionario(models.Model):
 	nome = models.CharField('Nome:', max_length = 100, blank=False)
 	nomeGuerra = models.CharField('Nome de guerra: ', max_length = 40, blank=False)
 	endereco = models.CharField('Endereço:', max_length = 150, blank=False)
-	complemento = models.CharField('Complemento do endereço:', max_length = 150, blank=True)
+	complemento = models.CharField('Complemento do endereço:', max_length = 150, blank=False)
 	bairro = models.CharField('Bairro:', max_length = 40, blank=False)
 	cidade = models.CharField('Cidade:', max_length = 40, blank=False)
 	uf = models.CharField('UF:',  choices=UF,max_length = 2, blank=False)

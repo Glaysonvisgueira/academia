@@ -1,50 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!--<div class="container">
 
-	<div class="card">
-  <div class="card-header">
-    <span class="font-weight-bold">Matrícula:</span>&nbsp;&nbsp;{{ funcionario.id|upper }}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ funcionario.nome|upper }}</h5>
-    <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-    <a href="#" class="btn btn-warning font-weight-bold">Editar dados do funcionário&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
-  </div>
-</div>
-</div>
--->
 
 <div class="container">
 
-	<div class="card">
-  <div class="card-header">
-    <span class="font-weight-bold">Matrícula:</span>&nbsp;&nbsp;{{ funcionario.id|upper }}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title font-weight-bold">{{ funcionario.nome|upper }}</h5>
-    <p class="card-text">
-    	<span class="font-weight-bold">Nome de guerra: </span>{{ funcionario.nomeGuerra|upper}}<br/>
-    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPF: </span>{{ funcionario.cpf}}<br/>
-    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RG: </span>{{ funcionario.rg}}<br/>
-    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Endereço: </span>{{ funcionario.endereco|upper}}<br/>
-    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;Complemento: </span>{{ funcionario.complemento|upper}}<br/>
-    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bairro: </span>{{ funcionario.bairro|upper}}<br/>
-    	<span class="font-weight-bold">Cidade: </span>{{ funcionario.cidade|upper}}<br/>
-    	<span class="font-weight-bold">UF: </span>{{ funcionario.uf|upper}}<br/>
+	 
+  <br/>
+  
+    <p>
+       <span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matrícula: </span>{{ funcionario.id|upper }}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome completo: </span>{{ funcionario.nome|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome de guerra: </span>{{ funcionario.nomeGuerra|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPF: </span>{{ funcionario.cpf}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RG: </span>{{ funcionario.rg}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Endereço: </span>{{ funcionario.endereco|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Complemento: </span>{{ funcionario.complemento|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bairro: </span>{{ funcionario.bairro|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cidade: </span>{{ funcionario.cidade|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UF: </span>{{ funcionario.uf|upper}}<br/>
     	<span class="font-weight-bold">Data de nascimento: </span>{{ funcionario.nascimento|date:"d/m/Y"}}<br/>
-    	<span class="font-weight-bold">Telefone: </span>{{ funcionario.telefone|upper}}<br/>
-    	<span class="font-weight-bold">E-mail: </span>{{ funcionario.email}}<br/>
-    	<span class="font-weight-bold">Data de admissão: </span>{{ funcionario.dataAdmissao|date:"d/m/Y"}}<br/>
-    	<span class="font-weight-bold">Status: </span>{{ funcionario.status|upper}}<br/>
-
-
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: </span>{{ funcionario.telefone|upper}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: </span>{{ funcionario.email}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;Data de admissão: </span>{{ funcionario.dataAdmissao|date:"d/m/Y"}}<br/>
+    	<span class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: </span>{{ funcionario.status|upper}}<br/>
+<br/>
+<span class="text-monospace badge badge-warning float-right">&nbsp;&nbsp;&nbsp;&nbsp;Criado em: {{ funcionario.created_at }}</span><br/>
+<span class="text-monospace badge badge-warning float-right">Atualizado em: {{ funcionario.updated_at }}</span>
     </p>
 
-
-    <a href="#" class="btn btn-warning font-weight-bold">Editar dados do funcionário&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
+<div class="row">
+    
+ 
+    <a href="{% url 'listar_funcionarios' %}" class="btn btn-warning font-weight-bold">Voltar&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
+    <a href="{% url 'editar_funcionario' pk=funcionario.pk %}" class="ml-2 btn btn-outline-warning font-weight-bold">Editar&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
   </div>
+  </div>
+
 </div>
 </div>
 

@@ -37,6 +37,17 @@ def listar_funcionarios(request):
 
     return render(request, template_name, context)
 
+def editar_funcionario(request, pk):
+    funcionario = get_object_or_404(Funcionario, pk=pk)
+    if request.method == "POST":
+        form = FuncionarioForm(request.POST, instance=funcionario)
+        if form.is_valid():
+            funcionario = form.save(commit=False)
+            funcionario.save()
+            return redirect('http://localhost:8000/funcionario/funcionarios-cadastrados', pk=funcionario.pk)
+    else:
+        form = FuncionarioForm(instance=funcionario)
+    return render(request, 'editar-funcionario.html', {'form': form })
 
 
 

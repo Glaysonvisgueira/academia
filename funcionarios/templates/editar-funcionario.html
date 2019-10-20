@@ -2,7 +2,7 @@
 {% block content %}
 
 {{ form.media }}
-<div class="container">
+<div class="container card shadow-lg p-3 mb-5 bg-white rounded">
 	<div class="row">
 		<div class="card-body">
 			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
@@ -71,12 +71,12 @@
 							{{form.status}}
 						</div>
 
-						<div class=" col-12 alert alert-danger mt-3" role="alert">
-							Os campos marcados com <span class="text-danger font-weight-bold">*</span> são de preenchimento obrigatório.
+						<div class=" col-12 alert alert-success mt-3" role="alert">
+							Após a alteração dos dados, clique no botão <span class="font-weight-bold">"Alterar dados"</span> para gravar as alterações.
 						</div>
 
-						<button type="submit" class="btn btn-success"><strong>Cadastrar funcionário</button>
-
+						<button type="submit" class="btn btn-warning"><strong>Alterar dados <img src="/static/feather/edit-3.svg" alt="editar" class="icone"></button>
+							<a href="{% url 'listar_funcionarios' %}" class=" ml-2 btn btn-warning font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
 					</form>	
 
 

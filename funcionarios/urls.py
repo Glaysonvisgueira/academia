@@ -11,5 +11,5 @@ urlpatterns = [
     path('funcionario-cadastrado/',views.cadastro_sucesso, name="cadastro_sucesso"),   
     path('funcionarios-cadastrados/',views.listar_funcionarios, name="listar_funcionarios"), 
     url(r'^matricula-(?P<id>\d+)/$', views.dados_funcionario, name="dados_funcionario"),
-    
+    url(r'^editar/matricula-(?P<pk>\d+)/$', views.editar_funcionario, name="editar_funcionario"),
     ]
