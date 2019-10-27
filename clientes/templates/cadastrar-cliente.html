@@ -5,22 +5,19 @@
 <div class="container">
 	<div class="row">
 		<div class="card-body">
-			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
+			<h3 class="font-weight-bold">Cadastro de novo cliente</h3><hr/>
 			<div class="mx-auto">
 				{{ form.non_field_errors }}
 				<form method="POST">
 					<div class="row">
 						{% csrf_token %}
-						<div class="col-4">
+						<div class="col-6">
 							
 							<label class="font-weight-bold mt-2">Nome&nbsp;<span class="text-danger">*</span></label>
 							{{form.nome}}
 						</div>					
-						<div class="col-2">
-							<label class="font-weight-bold mt-2">Nome de guerra&nbsp;<span class="text-danger">*</span></label>
-							{{form.nomeGuerra}}
-						</div>					
-											
+
+
 						<div class="col-3">
 							<label class="font-weight-bold mt-2">CPF&nbsp;<span class="text-danger">*</span></label>
 							{{form.cpf}}
@@ -63,8 +60,8 @@
 							{{form.nascimento}}
 						</div>
 						<div class="col-3">
-							<label class="font-weight-bold mt-2">Data de admissão&nbsp;<span class="text-danger">*</span></label>
-							{{form.dataAdmissao}}
+							<label class="font-weight-bold mt-2">Data inicío&nbsp;<span class="text-danger">*</span></label>
+							{{form.dataInicio}}
 						</div>
 
 						<div class="col-3">
@@ -79,8 +76,7 @@
 						{% if form.errors %}
 						<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
 							
-								{{ form.nome.errors }} 
-								{{ form.nomeGuerra.errors }}
+								{{ form.name.errors }} 
 								{{ form.cpf.errors }} 
 								{{ form.rg.errors }} 
 								{{ form.endereco.errors }}
@@ -90,24 +86,27 @@
 								{{ form.nascimento.errors }}
 								{{ form.telefone.errors }}
 								{{ form.email.errors }}
-								{{ form.dataAdmissao.errors }}
+								{{ form.dataInicio.errors }}
 								{{ form.status.errors }}
 							
 						</div>
 						{% endif%}
 
 						<div>
-							<button type="submit" class="mt-4 btn btn-success"><strong>Cadastrar funcionário</button>
+							<button type="submit" class="mt-4 btn btn-success"><strong>Cadastrar cliente </button>
 							</div>
-					</form>	
 
 
+
+						</form>	
+
+
+					</div>
 				</div>
 			</div>
-		</div>
 
+		</div>
 	</div>
-</div>
 </div>
 </div>
 
