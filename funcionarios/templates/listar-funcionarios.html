@@ -69,7 +69,7 @@
 		
 <form class="form-inline mx-auto">
   <div class="form-group mx-sm-3 ">
-    <input type="text" class="form-control" placeholder="Procurar funcionário">
+    <input type="text" class="form-control" name="pesquisar_funcionario" placeholder="Insira o nome">
   </div>
   <button type="submit" class="btn btn-warning font-weight-bold">Pesquisar <img src="/static/feather/search.svg" alt="search" class="icone"></button>
 </form>
@@ -81,6 +81,11 @@
 
  
  	<br/>
+ 	<div class="container">
+ 		<div class="row">
+ 			<p class="badge badge-dark">Funcionários encontrados: {{total_funcionarios}}</p>
+ 		</div>
+ 	</div>
 	
 	<div class="table-responsive col-md-12">
 		<table class="table table-bordered  table-hover table-sm" cellspacing="0" cellpadding="0">

@@ -34,7 +34,7 @@
 <body class="background-site">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="background-color: #000000;">
   
-  <a class="navbar-brand" href="{% url 'home' %}">Bee Strong</a>
+  <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -57,6 +57,17 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Opção 1</a>        
+        </div>
+      </li>
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Gestão de contas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'registrar_conta' %}">Cadastrar acesso</a>
+          <a class="dropdown-item" href="{% url 'editar_conta' %}">Editar conta</a>
+          <a class="dropdown-item" href="{% url 'alterar_senha' %}">Alterar senha</a>
+          <a class="dropdown-item" href="#">Logout</a>        
         </div>
       </li>
      

@@ -4,6 +4,9 @@ from funcionarios.models import Funcionario
 from funcionarios.forms import FuncionarioForm
 
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None 
+
 def cadastro_sucesso(request):
 	return render(request,'sucesso-cadastro.html')
 
@@ -27,7 +30,11 @@ def listar_funcionarios(request):
     funcionarios_ativos = Funcionario.objects.filter(status='ATIVO').count()
     funcionarios_inativos = Funcionario.objects.filter(status='INATIVO').count()
     total_funcionarios = Funcionario.objects.all().count()
-    template_name = 'listar-funcionarios.html'     
+    template_name = 'listar-funcionarios.html'
+    pesquisar = request.GET.get('pesquisar_funcionario') 
+    if is_valid_queryparam(pesquisar):
+        funcionarios = funcionarios.filter(nome__icontains=pesquisar) #Pesquisar por objetos que contém a string contida na variável pesquisar.
+        total_funcionarios = funcionarios.filter(nome__icontains=pesquisar).count()
     context = {
         'funcionarios': funcionarios, 
         'funcionarios_ativos': funcionarios_ativos,

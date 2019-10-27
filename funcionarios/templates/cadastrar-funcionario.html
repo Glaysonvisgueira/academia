@@ -7,6 +7,7 @@
 		<div class="card-body">
 			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
 			<div class="mx-auto">
+				{{ form.non_field_errors }}
 				<form method="POST">
 					<div class="row">
 						{% csrf_token %}
