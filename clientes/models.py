@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core import validators
 
 STATUS = (
         ('ATIVO', 'ATIVO'),
@@ -34,10 +36,14 @@ UF = (
         ('TO', 'TO'),
     )
 
+def validar_cpf(cpf):
+    if len(cpf) < 11:
+        raise ValidationError("CPF informado não é válido! Quantidade correta de caracteres: 11 dígitos.")
+
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)
-	cpf = models.CharField('CPF:', max_length = 11, blank=False)
-	rg = models.CharField('RG:', max_length = 7, blank=False)
+	cpf = models.CharField('CPF:', max_length = 11, blank=False, validators=[validar_cpf])
+	rg = models.CharField('RG:', max_length = 14, blank=False)
 	nome = models.CharField('Nome:', max_length = 100, blank=False)
 	endereco = models.CharField('Endereço:', max_length = 150, blank=False)
 	complemento = models.CharField('Complemento do endereço:', max_length = 150, null=True, blank=True)

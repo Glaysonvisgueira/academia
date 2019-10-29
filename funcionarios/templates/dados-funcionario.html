@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<!--
 
 <div class="container">
 
@@ -36,6 +36,96 @@
     <a href="{% url 'editar_funcionario' pk=funcionario.pk %}" class="ml-2 btn btn-outline-warning font-weight-bold">Editar&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
   </div>
   </div>
+
+</div>
+</div>
+
+-->
+
+
+<div class="container">
+        <div class="row col-9 mx-auto">
+        <table class="table table-sm table-striped table-bordered">
+            <caption class="text-monospace"><small>Cadastrado em: {{ funcionario.created_at }}<br/>Atualizado em: {{ funcionario.updated_at }}</small></caption>
+  
+  <tbody>
+    <tr>
+      <th class="text-right">Matrícula:</th>
+      <td>{{ funcionario.id|upper }}</td>
+      
+    </tr>
+    <tr>
+      <th class="text-right">Nome:</th>
+      <td>{{ funcionario.nome|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Nome de guerra:</th>
+      <td>{{ funcionario.nomeGuerra|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">CPF:</th>
+      <td>{{ funcionario.cpf }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">RG:</th>
+      <td>{{ funcionario.rg}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Endereço:</th>
+      <td>{{ funcionario.endereco|upper }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Complemento:</th>
+      <td>{{ funcionario.complemento|upper }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Bairro:</th>
+      <td>{{ funcionario.bairro|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Cidade:</th>
+      <td>{{ funcionario.cidade|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">UF:</th>
+      <td>{{ funcionario.uf|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Data de nascimento:</th>
+      <td>{{ funcionario.nascimento|date:"d/m/Y"}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Telefone:</th>
+      <td>{{ funcionario.telefone|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Email:</th>
+      <td>{{ funcionario.email}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Data de admissão:</th>
+      <td>{{ funcionario.dataAdmissao|date:"d/m/Y"}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Status:</th>
+      <td>{{ funcionario.status|upper}}</td>
+    </tr>
+  </tbody>
+</table>
+<div >
+       <a href="{% url 'listar_funcionarios' %}" class="btn btn-warning font-weight-bold">Voltar&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
+       <a href="{% url 'editar_funcionario' pk=funcionario.pk %}" class="ml-2 btn btn-outline-warning font-weight-bold">Editar&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
+   </div>
+     </div>
+     <br/>
+     <!---
+<div>
+    <span class="text-monospace float-right"><small>&nbsp;&nbsp;&nbsp;&nbsp;Criado em: {{ funcionario.created_at }}</small></span><br/>
+    <span class="text-monospace float-right"><small>Atualizado em: {{ funcionario.updated_at }}</small></span>
+</div>
+
+-->
+</div>
 
 </div>
 </div>

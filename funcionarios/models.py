@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core import validators
 
 STATUS = (
         ('ATIVO', 'ATIVO'),
@@ -35,11 +37,15 @@ UF = (
     )
 
 
+def validar_cpf(cpf):
+    if len(cpf) < 11:
+        raise ValidationError("CPF informado não é válido! Quantidade correta de caracteres: 11 dígitos.")
+
 
 class Funcionario(models.Model):
 	id = models.AutoField(primary_key=True)
-	cpf = models.CharField('CPF:', max_length = 11, blank=False)
-	rg = models.CharField('RG:', max_length = 7, blank=False)
+	cpf = models.CharField('CPF:', max_length = 11, blank=False, validators=[validar_cpf])
+	rg = models.CharField('RG:', max_length = 14, blank=False)
 	nome = models.CharField('Nome:', max_length = 100, blank=False)
 	nomeGuerra = models.CharField('Nome de guerra: ', max_length = 40, blank=False)
 	endereco = models.CharField('Endereço:', max_length = 150, blank=False)
@@ -57,7 +63,7 @@ class Funcionario(models.Model):
     
 	def __str__(self):
 		return self.nomeGuerra
-		
+
 	class Meta:
 		verbose_name = "Funcionario"
 		verbose_name_plural = "Funcionários"

@@ -10,7 +10,7 @@ User = get_user_model()
 
 
 class RegistroForm(UserCreationForm):
-	username = forms.CharField(max_length=150,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+	username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
 	email = forms.EmailField(label='E-mail', widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
 	password1 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
 	password2 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
@@ -31,7 +31,7 @@ class RegistroForm(UserCreationForm):
 	
 
 class EditarContaForm(forms.ModelForm):
-    username = forms.CharField(max_length=150,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     email = forms.EmailField(label='E-mail', widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))

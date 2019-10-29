@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+        <div class="row col-9 mx-auto">
+        <table class="table table-sm table-striped table-bordered">
+            <caption class="text-monospace"><small>Cadastrado em: {{ cliente.created_at }}<br/>Atualizado em: {{ cliente.updated_at }}</small></caption>
+  
+  <tbody>
+    <tr>
+      <th class="text-right">Matrícula:</th>
+      <td>{{ cliente.id|upper }}</td>
+      
+    </tr>
+    <tr>
+      <th class="text-right">Nome:</th>
+      <td>{{ cliente.nome|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">CPF:</th>
+      <td>{{ cliente.cpf }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">RG:</th>
+      <td>{{ cliente.rg}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Endereço:</th>
+      <td>{{ cliente.endereco|upper }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Complemento:</th>
+      <td>{{ cliente.complemento|upper }}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Bairro:</th>
+      <td>{{ cliente.bairro|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Cidade:</th>
+      <td>{{ cliente.cidade|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">UF:</th>
+      <td>{{ cliente.uf|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Data de nascimento:</th>
+      <td>{{ cliente.nascimento|date:"d/m/Y"}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Telefone:</th>
+      <td>{{ cliente.telefone|upper}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Email:</th>
+      <td>{{ cliente.email}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Data de início:</th>
+      <td>{{ cliente.dataInicio|date:"d/m/Y"}}</td>
+    </tr>
+    <tr>
+      <th class="text-right">Status:</th>
+      <td>{{ cliente.status|upper}}</td>
+    </tr>
+  </tbody>
+</table>
+<div >
+       <a href="{% url 'listar_clientes' %}" class="btn btn-warning font-weight-bold">Voltar&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
+       <a href="{% url 'editar_cliente' pk=cliente.pk %}" class="ml-2 btn btn-outline-warning font-weight-bold">Editar&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
+   </div>
+     </div>
+     <br/>
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

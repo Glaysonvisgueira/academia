@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+
 {{ form.media }}
+
 
 <script type="text/javascript">
 	
@@ -27,22 +29,19 @@ function isNumber(evt) {
 <div class="container">
 	<div class="row">
 		<div class="card-body">
-			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
+			<h3 class="font-weight-bold">Editar dados do cliente</h3><hr/>
 			<div class="mx-auto">
 				{{ form.non_field_errors }}
 				<form method="POST">
 					<div class="row">
 						{% csrf_token %}
-						<div class="col-4">
+						<div class="col-6">
 							
 							<label class="font-weight-bold mt-2">Nome&nbsp;<span class="text-danger">*</span></label>
 							{{form.nome}}
 						</div>					
-						<div class="col-2">
-							<label class="font-weight-bold mt-2">Nome de guerra&nbsp;<span class="text-danger">*</span></label>
-							{{form.nomeGuerra}}
-						</div>					
-											
+
+
 						<div class="col-3">
 							<label class="font-weight-bold mt-2">CPF&nbsp;<span class="text-danger">*</span></label>
 							{{form.cpf}}
@@ -85,8 +84,8 @@ function isNumber(evt) {
 							{{form.nascimento}}
 						</div>
 						<div class="col-3">
-							<label class="font-weight-bold mt-2">Data de admissão&nbsp;<span class="text-danger">*</span></label>
-							{{form.dataAdmissao}}
+							<label class="font-weight-bold mt-2">Data inicío&nbsp;<span class="text-danger">*</span></label>
+							{{form.dataInicio}}
 						</div>
 
 						<div class="col-3">
@@ -95,14 +94,13 @@ function isNumber(evt) {
 						</div>
 
 						<div class="caption mt-3 text-muted col-12" role="alert">
-							Os campos marcados com <span class="text-danger font-weight-bold">*</span> são de preenchimento obrigatório.
+							Os campos marcados com <span class="text-danger font-weight-bold">*</span> são de preenchimento obrigatório, após a edição, clicar em "Alterar dados" para gravar as alterações.
 						</div>
 
 						{% if form.errors %}
 						<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
 							
-								{{ form.nome.errors }} 
-								{{ form.nomeGuerra.errors }}
+								{{ form.name.errors }} 
 								{{ form.cpf.errors }} 
 								{{ form.rg.errors }} 
 								{{ form.endereco.errors }}
@@ -112,24 +110,28 @@ function isNumber(evt) {
 								{{ form.nascimento.errors }}
 								{{ form.telefone.errors }}
 								{{ form.email.errors }}
-								{{ form.dataAdmissao.errors }}
+								{{ form.dataInicio.errors }}
 								{{ form.status.errors }}
 							
 						</div>
 						{% endif%}
 
-						<div>
-							<button type="submit" class="mt-4 btn btn-success"><strong>Cadastrar funcionário</button>
+						<div class="mt-2">
+							<button type="submit" class="btn btn-warning"><strong>Alterar dados <img src="/static/feather/edit-3.svg" alt="editar" class="icone"></button>
+							<a href="{% url 'listar_funcionarios' %}" class=" ml-2 btn btn-warning font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
 							</div>
-					</form>	
 
 
+
+						</form>	
+
+
+					</div>
 				</div>
 			</div>
-		</div>
 
+		</div>
 	</div>
-</div>
 </div>
 </div>
 

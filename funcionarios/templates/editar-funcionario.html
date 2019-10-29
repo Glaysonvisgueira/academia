@@ -2,10 +2,35 @@
 {% block content %}
 
 {{ form.media }}
+
+<script type="text/javascript">
+	
+	
+function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ( (charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+
+ function isNumericKey(evt)
+			{
+				var charCode = (evt.which) ? evt.which : evt.keyCode;
+				if (charCode != 46 && charCode > 31 
+				&& (charCode < 48 || charCode > 57))
+				return true;
+				return false;
+			} 
+
+
+</script>
+
 <div class="container	">
 	<div class="row">
 		<div class="card-body">
-			<h3 class="font-weight-bold">Cadastro de novo funcionário</h3><hr/>
+			<h3 class="font-weight-bold">Editar dados do funcionário</h3><hr/>
 			<div class="mx-auto">
 				<form method="POST">
 					<div class="row">
@@ -71,12 +96,31 @@
 							{{form.status}}
 						</div>
 
-						<div class=" col-12 alert alert-success mt-3" role="alert">
-							Após a alteração dos dados, clique no botão <span class="font-weight-bold">"Alterar dados"</span> para gravar as alterações.
+							<div class="caption mt-3 text-muted col-12" role="alert">
+							Os campos marcados com <span class="text-danger font-weight-bold">*</span> são de preenchimento obrigatório, após a edição, clicar em "Alterar dados" para gravar as alterações.
 						</div>
 
-						<button type="submit" class="btn btn-warning"><strong>Alterar dados <img src="/static/feather/edit-3.svg" alt="editar" class="icone"></button>
-							<a href="{% url 'listar_funcionarios' %}" class=" ml-2 btn btn-warning font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
+						{% if form.errors %}
+						<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
+								{{ form.nome.errors }} 
+								{{ form.nomeGuerra.errors }}
+								{{ form.cpf.errors }} 
+								{{ form.rg.errors }} 
+								{{ form.endereco.errors }}
+								{{ form.bairro.errors }}
+								{{ form.cidade.errors }}
+								{{ form.uf.errors }}
+								{{ form.nascimento.errors }}
+								{{ form.telefone.errors }}
+								{{ form.email.errors }}
+								{{ form.dataAdmissao.errors }}
+								{{ form.status.errors }}
+						</div>
+						{% endif%}
+
+
+						<button type="submit" class="btn btn-warning mt-2"><strong>Alterar dados <img src="/static/feather/edit-3.svg" alt="editar" class="icone"></button>
+							<a href="{% url 'listar_funcionarios' %}" class=" mt-2 ml-2 btn btn-warning font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voltar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
 					</form>	
 
 

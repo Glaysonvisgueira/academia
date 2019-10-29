@@ -8,4 +8,7 @@ from clientes import views
 
 urlpatterns = [    
     path('cadastrar-cliente/',views.cadastrar_cliente, name="cadastrar_cliente"),
+    path('clientes-cadastrados/',views.listar_clientes, name="listar_clientes"),
+    url(r'^matricula-(?P<id>\d+)/$', views.dados_cliente, name="dados_cliente"),
+    url(r'^editar/matricula-(?P<pk>\d+)/$', views.editar_cliente, name="editar_cliente"),
     ]

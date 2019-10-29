@@ -39,17 +39,19 @@ STATUS = (
         ('INATIVO', 'INATIVO')        
     )
 
+
+
 class ClienteForm(forms.ModelForm):
-    nome = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase'}))
-    cpf = forms.CharField(max_length=11,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-    rg = forms.CharField(max_length=7,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    nome = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','onkeypress':'return isNumericKey(event)'}))
+    cpf = forms.CharField(max_length=11,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','onkeypress':'return isNumber(event)'}))
+    rg = forms.CharField(max_length=14,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','onkeypress':'return isNumber(event)'}))
     endereco = forms.CharField(max_length=150,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase'}))
     complemento = forms.CharField(max_length=150,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase'}))
     bairro = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase'}))
-    cidade = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase'}))
+    cidade = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','onkeypress':'return isNumericKey(event)'}))
     uf = forms.CharField(widget=forms.Select(choices=UF,attrs={'class':'form-control form-control-sm'}))
     nascimento = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm'}))
-    telefone = forms.CharField(max_length=12,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    telefone = forms.CharField(max_length=12,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','onkeypress':'return isNumber(event)'}))
     email = forms.CharField(max_length=70,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     dataInicio = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm'}))
     status = forms.CharField(widget=forms.Select(choices=STATUS,attrs={'class':'form-control form-control-sm'}))
