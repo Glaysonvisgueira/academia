@@ -40,9 +40,14 @@ def validar_cpf(cpf):
     if len(cpf) < 11:
         raise ValidationError("CPF informado não é válido! Quantidade correta de caracteres: 11 dígitos.")
 
+def validar_telefone(telefone):
+    if len(telefone) < 12:
+        raise ValidationError("Número de telefone inválido! Verifique a quantidade de dígitos informados.")
+
+
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)
-	cpf = models.CharField('CPF:', max_length = 11, blank=False, validators=[validar_cpf])
+	cpf = models.CharField('CPF:', max_length = 11, blank=False, unique=True, validators=[validar_cpf])
 	rg = models.CharField('RG:', max_length = 14, blank=False)
 	nome = models.CharField('Nome:', max_length = 100, blank=False)
 	endereco = models.CharField('Endereço:', max_length = 150, blank=False)
@@ -51,7 +56,7 @@ class Cliente(models.Model):
 	cidade = models.CharField('Cidade:', max_length = 40, blank=False)
 	uf = models.CharField('UF:',  choices=UF,max_length = 2, blank=False)
 	nascimento = models.DateField('Data de nascimento:', blank = False)
-	telefone = models.CharField('Telefone:', max_length = 12, blank=True, null=True)
+	telefone = models.CharField('Telefone:', max_length = 12, blank=True, null=True, validators=[validar_telefone])
 	email = models.EmailField(max_length=70, null=True, blank=True, unique=True)
 	dataInicio = models.DateField('Data de início:', blank = False)
 	created_at = models.DateTimeField('Criado em',auto_now_add = True)

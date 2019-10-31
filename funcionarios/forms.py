@@ -39,7 +39,7 @@ UF = (
     )
 
 
-class FuncionarioForm(forms.ModelForm):
+class FuncionarioForm(forms.ModelForm):#TODO retirar o autocomplete dos campos necessários.
     nome = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','onkeypress':'return isNumericKey(event)'}))
     nomeGuerra = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','onkeypress':'return isNumericKey(event)'}))
     cpf = forms.CharField(max_length=11,widget=forms.TextInput(attrs={'class':'form-control form-control-sm numbers','placeholder':'000.000.000-00','onkeypress':'return isNumber(event)'}))
