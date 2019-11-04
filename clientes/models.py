@@ -47,7 +47,7 @@ def validar_telefone(telefone):
 
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)
-	cpf = models.CharField('CPF:', max_length = 11, blank=False, unique=True, validators=[validar_cpf])
+	cpf = models.CharField('CPF:', max_length = 11, blank=False, validators=[validar_cpf])
 	rg = models.CharField('RG:', max_length = 14, blank=False)
 	nome = models.CharField('Nome:', max_length = 100, blank=False)
 	endereco = models.CharField('Endereço:', max_length = 150, blank=False)

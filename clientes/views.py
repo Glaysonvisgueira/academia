@@ -45,7 +45,7 @@ def dados_cliente(request, id):
     return render(request, template_name, context)
 
 def editar_cliente(request, pk):
-    cliente = get_object_or_404(Cliente, pk=pk)
+    cliente = get_object_or_404(Cliente, pk=pk)   
     if request.method == "POST":
         form = ClienteForm(request.POST, instance=cliente)
         if form.is_valid():
