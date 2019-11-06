@@ -49,9 +49,9 @@
 					<td class="text-center">{{ cliente.dataInicio|date:"d/m/Y" }}</td>
 					<td class="text-center">
 						{% if cliente.status == "ATIVO" %}
-						<a class="badge badge-success mx-auto">&nbsp;&nbsp;{{ cliente.status }}&nbsp;&nbsp;</a>
+						<span class="badge badge-success mx-auto">&nbsp;&nbsp;{{ cliente.status }}&nbsp;&nbsp;</span>
 						{% else %}
-						<a class="badge badge-danger mx-auto">{{ cliente.status }}</a>
+						<span class="badge badge-danger mx-auto">{{ cliente.status }}</span>
 						{% endif%}
 					</td>	
 					<td class=" text-center actions">

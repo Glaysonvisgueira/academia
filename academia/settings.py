@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'core',
     'bootstrap_datepicker_plus',
     'contas',
-    'mensalidades',    
+    'mensalidades',  
+    'avaliacoes',
+    'frequencias',  
 ]
 
 MIDDLEWARE = [

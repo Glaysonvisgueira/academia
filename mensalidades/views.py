@@ -13,3 +13,6 @@ def listar_mensalidades(request, id):
     }
     template_name = 'mensalidades-pendentes.html'
     return render(request, template_name, context)
+
+def realizar_pagamento(request):
+	return render(request,'pagamento-cartao.html')

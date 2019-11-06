@@ -8,5 +8,6 @@ from mensalidades import views
 
 urlpatterns = [    
     url(r'^mensalidades-pendentes/matricula-(?P<id>\d+)/$',views.listar_mensalidades, name="listar_mensalidades"),
+    url(r'^pagamento/',views.realizar_pagamento, name="realizar_pagamento"),
     ]
 

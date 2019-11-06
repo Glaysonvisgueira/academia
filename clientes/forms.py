@@ -50,10 +50,10 @@ class ClienteForm(forms.ModelForm):
     bairro = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
     cidade = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'class':'form-control form-control-sm text-uppercase','onkeypress':'return isNumericKey(event)', 'autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
     uf = forms.CharField(widget=forms.Select(choices=UF,attrs={'class':'form-control form-control-sm'}))
-    nascimento = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm'}))
+    nascimento = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
     telefone = forms.CharField(max_length=12,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','onkeypress':'return isNumber(event)', 'autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
-    email = forms.CharField(max_length=70,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'seuemail@.com','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
-    dataInicio = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm'}))
+    email = forms.CharField(max_length=70,required=False,widget=forms.TextInput(attrs={'class':'form-control form-control-sm','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
+    dataInicio = forms.DateField(widget=DatePickerInput(options={"locale":"pt-br"},format='%d/%m/%Y',attrs={'placeholder':'dd/mm/aaaa','class':'form-control form-control-sm','oncopy':'return false','onpaste':'return false','ondrop':'return false'}))
     status = forms.CharField(widget=forms.Select(choices=STATUS,attrs={'class':'form-control form-control-sm'}))
 
     class Meta:
