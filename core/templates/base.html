@@ -28,7 +28,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Routermax: uma plataforma para automatizar a routeirização de pontos de visita." />
-  <title>Academia Bee Strong</title>
+  <title>Academia de musculação</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 </head>
 <body class="background-site">
@@ -76,7 +76,7 @@
           Gestão de avaliações
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Avaliar</a>
+          <a class="dropdown-item" href="{% url 'avaliar_criterio' %}">Avaliar</a>
           <a class="dropdown-item" href="{% url 'listar_avaliacoes' %}">Verificar avaliações</a>
         </div>
       </li>

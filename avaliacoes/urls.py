@@ -7,4 +7,5 @@ from avaliacoes import views
 
 urlpatterns = [
 	path('listar-avaliações/',views.listar_avaliacoes, name="listar_avaliacoes"),
+	path('avaliar/',views.avaliar_criterio, name="avaliar_criterio"),
 ]

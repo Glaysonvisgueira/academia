@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">  
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})  
+</script>
+
+
+
+<div class="container">
+	<h3 class="font-weight-bold ">Sistema de avaliações</h3><hr/>
+	<div class="row">
+
+		<form method="POST" class="col-12 ">
+			{% csrf_token %}
+			<!--
+			<div class="col-12">
+				<label for="customRange2" class="font-weight-bold"><img src="/static/feather/chevrons-right.svg" alt="chevrons-right" class="icone"> Como você avalia o ambiente da academia?</label>
+				<input type="range" class="custom-range" min="0" max="10" value="5" id="customRange2">
+				<span class="text-danger float-left">1 (Péssimo)</span>
+				<span class="float-right text-success">10 (Ótimo)</span>
+			</div>
+			<div class="mt-4 col-12">
+				<label for="customRange2" class="font-weight-bold"><img src="/static/feather/chevrons-right.svg" alt="chevrons-right" class="icone"> Como você avalia o atendimento prestado pelos funcionários?</label>
+				<input type="range" class="custom-range" min="0" max="10" value="5" id="customRange2">
+				<span class="text-danger float-left">1 (Péssimo)</span>
+				<span class="float-right text-success">10 (Ótimo)</span>
+			</div>
+			<div class="mt-4 col-12">
+				<label for="customRange2" class="font-weight-bold"><img src="/static/feather/chevrons-right.svg" alt="chevrons-right" class="icone"> Como você avalia os equipamentos da academia?</label>
+				<input type="range" class="custom-range" min="0" max="10" value="5" id="customRange2">
+				<span class="text-danger float-left">1 (Péssimo)</span>
+				<span class="float-right text-success">10 (Ótimo)</span>
+			</div>
+			<div class="mt-4 col-12">
+				<label for="customRange2" class="font-weight-bold"><img src="/static/feather/chevrons-right.svg" alt="chevrons-right" class="icone"> Como você avalia os instrutores?</label>
+				<input type="range" class="custom-range" min="0" max="10" value="5" id="customRange2">
+				<span class="text-danger float-left">1 (Péssimo)</span>
+				<span class="float-right text-success">10 (Ótimo)</span>
+			</div>
+		-->
+
+		<div class="col-6  mx-auto">
+			<label class="font-weight-bold">Já avaliado? </label>
+			{{form.is_avaliado}}
+		</div>
+		<div class="col-6  mx-auto">
+			<label class="font-weight-bold">Criterio: </label>
+			{{form.criterio}}
+		</div>
+		<div class="col-6 mt-2  mx-auto">
+			<label class="font-weight-bold">Nota: </label>
+			{{form.nota}}
+		</div>
+		<div class="mt-2 col-6  mx-auto">
+			<label class="font-weight-bold">Comentario: </label>
+			{{form.comentario}}
+		</div>
+		{% if form.errors %}
+		<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
+
+			{{ form.is_avaliado.errors }} 
+			{{ form.criterio.errors }}
+			{{ form.nota.errors }} 
+			{{ form.comentario.errors }} 
+
+		</div>
+		{% endif%}
+
+
+
+
+		<div class="col-6 mx-auto">
+			<button type="submit" class="mt-4 btn btn-success btn-block"><strong>Avaliar</button>
+			</div>
+		</form>
+	</div>
+</div>
+{%endblock %}
