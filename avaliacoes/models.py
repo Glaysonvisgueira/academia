@@ -8,6 +8,11 @@ CRITERIO = (
 	('INSTRUTORES','INSTRUTORES'),
 	('AMBIENTE','AMBIENTE'),
 	)
+'''
+def validar_avaliacao(criterio):
+	if Avaliacao.objects.filter(avaliador='glayson').exists():
+		raise ValidationError("Já avaliado!")
+'''
 
 
 class Avaliacao(models.Model):
@@ -21,9 +26,15 @@ class Avaliacao(models.Model):
 
 
 	class Meta:
+		'''unique_together = [
+			("criterio", "avaliador"),	
+			]'''
+		constraints = [
+                     models.UniqueConstraint(fields=['criterio', 'avaliador'],name='a')
+                     ]
 		verbose_name = "Avaliação"
 		verbose_name_plural = "Avaliações"
-		ordering = ['is_avaliado','nota','comentario','criterio','avaliador','created_at']	
+		ordering = ['is_avaliado','nota','comentario','criterio','avaliador','created_at']
 
 
 
