@@ -9,12 +9,116 @@
 
 
 <div class="container">
-	<h3 class="font-weight-bold ">Sistema de avaliações</h3><hr/>
+	<h3 class="font-weight-bold ">Sistema de avaliações</h3>
+	<hr/>
 	<div class="row">
 
-		<form method="POST" class="col-12 ">
+		<form method="POST" class="col-12">
 			{% csrf_token %}
-			<!--
+			
+			<a class="invisible">
+				{{form.is_avaliado}}
+				{{form.criterio1}}
+				{{form.criterio2}}
+				{{form.criterio3}}
+				{{form.criterio4}}
+			</a class="invisible">
+
+
+			<p class="font-weight-bold">Como você avalia o ambiente da academia?</p>
+
+			{% for radio in form.notaCriterio1 %}
+			<div class="inline">
+				<label for="{{ radio.id_for_label }}">
+
+					<span class="radio">{{ radio.choice_label }}&nbsp;&nbsp;&nbsp;&nbsp;{{ radio.tag }}</span>
+				</label>
+				{% endfor %}
+			</div>
+
+			<hr/>
+			<p class="font-weight-bold">Como você avalia os equipamentos da academia?</p>
+			{% for radio in form.notaCriterio2 %}
+			<div class="inline">
+				<label for="{{ radio.id_for_label }}">
+
+					<span class="radio">{{ radio.choice_label }}&nbsp;&nbsp;&nbsp;&nbsp;{{ radio.tag }}</span>
+				</label>
+				{% endfor %}
+			</div>
+
+			<hr/>
+			<p class="font-weight-bold">Como você avalia os instrutores da academia?</p>
+			{% for radio in form.notaCriterio3 %}
+			<div class="inline">
+				<label for="{{ radio.id_for_label }}">
+
+					<span class="radio">{{ radio.choice_label }}&nbsp;&nbsp;&nbsp;&nbsp;{{ radio.tag }}</span>
+				</label>
+				{% endfor %}
+			</div>
+
+			<hr/>
+			<p class="font-weight-bold">Como você avalia o atendimento dos funcionários da academia?</p>
+			{% for radio in form.notaCriterio4 %}
+			<div class="inline">
+				<label for="{{ radio.id_for_label }}">
+
+					<span class="radio">{{ radio.choice_label }}&nbsp;&nbsp;&nbsp;&nbsp;{{ radio.tag }}</span>
+				</label>
+				{% endfor %}
+			</div>
+
+			<hr/>
+
+
+			<div class="mt-2 col-12  mx-auto">
+				<label class="font-weight-bold">Comentario: </label>
+				{{form.comentario}}
+			</div>
+
+
+			
+
+
+
+
+			<div class="col-12 mx-auto">
+				<button type="submit" class="mt-4 btn btn-success btn-block"><strong>Avaliar</button>
+				</div>
+				<br/>
+				<br/>
+
+				{% if form.errors %}
+				<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
+					{{ form.is_avaliado.errors }}
+					{{ form.nota1.errors }} 
+					{{ form.nota2.errors }} 
+					{{ form.nota3.errors }} 
+					{{ form.nota4.errors }} 
+					{{ form.criterio1.errors }}
+					{{ form.criterio2.errors }}
+					{{ form.criterio3.errors }}
+					{{ form.criterio4.errors }} 
+					{{ form.comentario.errors }}
+				</div>
+				{% endif%}
+
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+	{%endblock %}
+
+
+
+
+
+<!--
 			<div class="col-12">
 				<label for="customRange2" class="font-weight-bold"><img src="/static/feather/chevrons-right.svg" alt="chevrons-right" class="icone"> Como você avalia o ambiente da academia?</label>
 				<input type="range" class="custom-range" min="0" max="10" value="5" id="customRange2">
@@ -40,41 +144,3 @@
 				<span class="float-right text-success">10 (Ótimo)</span>
 			</div>
 		-->
-
-		<div class="col-6  mx-auto">
-			<label class="font-weight-bold">Já avaliado? </label>
-			{{form.is_avaliado}}
-		</div>
-		<div class="col-6  mx-auto">
-			<label class="font-weight-bold">Criterio: </label>
-			{{form.criterio}}
-		</div>
-		<div class="col-6 mt-2  mx-auto">
-			<label class="font-weight-bold">Nota: </label>
-			{{form.nota}}
-		</div>
-		<div class="mt-2 col-6  mx-auto">
-			<label class="font-weight-bold">Comentario: </label>
-			{{form.comentario}}
-		</div>
-		{% if form.errors %}
-		<div class="col-12 mt-3 alert alert-danger text-danger font-weight-bold">
-
-			{{ form.is_avaliado.errors }} 
-			{{ form.criterio.errors }}
-			{{ form.nota.errors }} 
-			{{ form.comentario.errors }} 
-
-		</div>
-		{% endif%}
-
-
-
-
-		<div class="col-6 mx-auto">
-			<button type="submit" class="mt-4 btn btn-success btn-block"><strong>Avaliar</button>
-			</div>
-		</form>
-	</div>
-</div>
-{%endblock %}

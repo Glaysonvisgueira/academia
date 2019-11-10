@@ -1,6 +1,6 @@
 from django.db import models
-
 from django.contrib.auth.models import User
+from django.conf import settings
 
 CRITERIO = (
 	('EQUIPAMENTOS','EQUIPAMENTOS'),
@@ -8,34 +8,30 @@ CRITERIO = (
 	('INSTRUTORES','INSTRUTORES'),
 	('AMBIENTE','AMBIENTE'),
 	)
-'''
-def validar_avaliacao(criterio):
-	if Avaliacao.objects.filter(avaliador='glayson').exists():
-		raise ValidationError("Já avaliado!")
-'''
+
 
 
 class Avaliacao(models.Model):
 	is_avaliado = models.BooleanField(default=False)
-	nota = models.IntegerField(default = 0, blank = False, null = False)
+	notaCriterio1 = models.IntegerField(default = 0, blank = False, null = True)
+	notaCriterio2 = models.IntegerField(default = 0, blank = False, null = True)
+	notaCriterio3 = models.IntegerField(default = 0, blank = False, null = True)
+	notaCriterio4 = models.IntegerField(default = 0, blank = False, null = True)
 	comentario = models.CharField('Comentario', max_length=200, null = True, blank = True)
-	criterio = models.ForeignKey('Criterio', on_delete=models.CASCADE)
-	avaliador = models.ForeignKey(User, on_delete=models.CASCADE, default='1') #Verificar campo Unique para avaliações
+	criterio1 = models.ForeignKey('Criterio', on_delete=models.CASCADE,related_name='+', blank=True, null=True)
+	criterio2 = models.ForeignKey('Criterio', on_delete=models.CASCADE,related_name='+', blank=True, null=True)
+	criterio3 = models.ForeignKey('Criterio', on_delete=models.CASCADE,related_name='+', blank=True, null=True)
+	criterio4 = models.ForeignKey('Criterio', on_delete=models.CASCADE,related_name='+', blank=True, null=True)
+	#avaliador = models.OneToOneField(User, on_delete=models.CASCADE, related_name='usuario_avaliador',null=True, blank= False) 
+	avaliador = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, unique=True) 
 	created_at = models.DateTimeField('Criado em',auto_now_add = True)
 	updated_at = models.DateTimeField('Atualizado em',auto_now = True)
 
 
 	class Meta:
-		'''unique_together = [
-			("criterio", "avaliador"),	
-			]'''
-		constraints = [
-                     models.UniqueConstraint(fields=['criterio', 'avaliador'],name='a')
-                     ]
 		verbose_name = "Avaliação"
 		verbose_name_plural = "Avaliações"
-		ordering = ['is_avaliado','nota','comentario','criterio','avaliador','created_at']
-
+		ordering = ['is_avaliado','notaCriterio1','notaCriterio2','notaCriterio3','notaCriterio4','comentario','criterio1','criterio2','criterio3','criterio4','avaliador','created_at']
 
 
 
