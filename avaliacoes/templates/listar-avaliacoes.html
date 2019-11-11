@@ -1,16 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 <script type="text/javascript">  
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })  
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})  
 </script>
 
 
 
 <div class="container">
-  <h3 class="font-weight-bold ">Relatório de avaliações</h3><hr/>
+	<h3 class="font-weight-bold ">Minhas avaliações</h3><hr/>
+	<div class="row col-12 mx-auto">
+		<span></span>
+		<table class="table table-sm table-bordered">
+			<thead>
+				<tr>
 
+					<th class="text-center">Avaliador</th>
+					<th class="text-center">Ambiente</th>
+					<th class="text-center">Equipamentos</th>
+					<th class="text-center">Instrutores</th>
+					<th class="text-center">Atendimento</th>
+					<th class="text-center">Média</th>
+					<th class="text-center">Comentário</th>
+				</tr>
+			</thead>      
+
+			<tbody>
+				{% for avaliacao in avaliacoes %}
+				<tr>
+
+					<td class="text-center">{{ avaliacao.avaliador|upper }}</td>
+					<td class="text-center">{{ avaliacao.notaCriterio1 }}</td>
+					<td class="text-center">{{ avaliacao.notaCriterio2 }}</td>
+					<td class="text-center">{{ avaliacao.notaCriterio3 }}</td>
+					<td class="text-center">{{ avaliacao.notaCriterio4 }}</td>
+					<td class="text-center">MÉDIA</td>
+					<td class="text-center">{{ avaliacao.comentario }}</td>
+
+				</tr>
+				{% endfor%}
+			</tbody>
+		</tbody>
+
+
+
+	</table>
+
+</div>
+</div>
 
 </div>
 {% endblock %}

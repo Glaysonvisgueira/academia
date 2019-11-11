@@ -6,7 +6,7 @@ from avaliacoes.models import Avaliacao, Criterio
 from avaliacoes.forms import AvaliacaoForm
 
 def listar_avaliacoes(request):    
-    avaliacoes = Avaliacao.objects.all().order_by('nota') 
+    avaliacoes = Avaliacao.objects.all() 
     template_name = 'listar-avaliacoes.html'
     context = {
         'avaliacoes': avaliacoes, 
