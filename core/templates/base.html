@@ -8,7 +8,7 @@
 
   .icone{
    width:22px;
-   }
+ }
 
  .background-site
  {
@@ -27,72 +27,99 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Routermax: uma plataforma para automatizar a routeirização de pontos de visita." />
+  <meta name="description" content="Sistema de gestão para academia de musculação" />
   <title>Academia de musculação</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 </head>
 <body class="background-site">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="background-color: #000000;">
-  
-  <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse "  id="conteudoNavbarSuportado">
-    <ul class="navbar-nav mr-auto">      
-    
-      <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestão de funcionários
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'cadastrar_funcionario' %}">Cadastrar novo funcionário</a>        
-          <a class="dropdown-item" href="{% url 'listar_funcionarios' %}">Listar funcionários</a>        
-        
-      </li>
-     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestão de clientes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'cadastrar_cliente' %}">Cadastrar novo cliente</a>  
-          <a class="dropdown-item" href="{% url 'listar_clientes' %}">Listar clientes</a>      
-        </div>
-      </li>
-      <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestão de contas
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'registrar_conta' %}">Cadastrar acesso</a>
-          <a class="dropdown-item" href="{% url 'editar_conta' %}">Editar conta</a>
-          <a class="dropdown-item" href="{% url 'alterar_senha' %}">Alterar senha</a>
-          <a class="dropdown-item" href="#">Logout</a>        
-        </div>
-      </li>
-     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestão de avaliações
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'avaliar_criterio' %}">Avaliar</a>
-          <a class="dropdown-item" href="{% url 'listar_avaliacoes' %}">Verificar avaliações</a>
-        </div>
-      </li>
-     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestão de frequências
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Registrar frequência</a>
-          <a class="dropdown-item" href="#">Dashboard de frequência</a>
-        </div>
-      </li>
-     
+    <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    </ul>    
-  </div>
+    <div class="collapse navbar-collapse "  id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">   
+      {% if perms.funcionarios.view_funcionario or perms.funcionarios.add_funcionario %}   
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Gestão de funcionários
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if perms.funcionarios.add_funcionario %}
+            <a class="dropdown-item" href="{% url 'cadastrar_funcionario' %}">Cadastrar novo funcionário</a>     
+            {% endif %}
+            {% if perms.funcionarios.view_funcionario %}   
+            <a class="dropdown-item" href="{% url 'listar_funcionarios' %}">Listar funcionários</a>        
+            {% endif %}
+          </li>
+          {% endif%}
+          {% if perms.clientes.add_cliente or perms.clientes.view_cliente %}
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestão de clientes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if perms.clientes.add_cliente %}
+              <a class="dropdown-item" href="{% url 'cadastrar_cliente' %}">Cadastrar novo cliente</a>  
+              {%  endif%}
+              {% if perms.clientes.view_cliente %}
+              <a class="dropdown-item" href="{% url 'listar_clientes' %}">Listar clientes</a>      
+              {% endif%}
+            </div>
+          </li>
+          {% endif%}
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestão de contas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'registrar_conta' %}">Cadastrar acesso</a>
+              {% if user.is_authenticated %}
+              <a class="dropdown-item" href="{% url 'editar_conta' %}">Editar conta</a>
+              <a class="dropdown-item" href="{% url 'alterar_senha' %}">Alterar senha</a>
+              <a class="dropdown-item" href="#">Logout</a>      
+              {% endif %}  
+            </div>
+          </li>
+          {% if perms.avaliacoes.view_avaliacao or perms.avaliacoes.add_avaliacao %}
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">              Gestão de avaliações
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if perms.avaliacoes.add_avaliacao %}
+              <a class="dropdown-item" href="{% url 'avaliar_criterio' %}">Avaliar</a>
+              {% endif %}
+              {% if perms.avaliacoes.view_avaliacao %}
+              <a class="dropdown-item" href="{% url 'listar_avaliacoes' %}">Verificar avaliações</a>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções do cliente
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Checar mensalidades</a>  
+              <a class="dropdown-item" href="#">Verificar minha avaliação</a>
+              <a class="dropdown-item" href="#">Dashboard de frequência</a>      
+            </div>
+          </li>
+          <!--
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestão de frequências
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Registrar frequência</a>
+              <a class="dropdown-item" href="#">Dashboard</a>
+            </div>
+          </li>  -->
+
+        </ul> 
+      </div>
 
 <!--
   <div class="dropdown">

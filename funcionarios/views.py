@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
-
+from django.contrib.auth.decorators import permission_required
+from core import views
 from funcionarios.models import Funcionario
 from funcionarios.forms import FuncionarioForm
 
@@ -10,6 +11,7 @@ def is_valid_queryparam(param):
 def cadastro_sucesso(request):
 	return render(request,'sucesso-cadastro.html')
 
+@permission_required('funcionarios.add_funcionario', login_url=views.autorizacao_negada)
 def cadastrar_funcionario(request):
     context = {}    
     template_name = 'cadastrar-funcionario.html'
@@ -24,7 +26,7 @@ def cadastrar_funcionario(request):
     return render(request, template_name, context)
 
 
-
+@permission_required('funcionarios.view_funcionario', login_url=views.autorizacao_negada)
 def listar_funcionarios(request):    
     funcionarios = Funcionario.objects.all().order_by('id') 
     funcionarios_ativos = Funcionario.objects.filter(status='ATIVO').count()
@@ -44,6 +46,8 @@ def listar_funcionarios(request):
 
     return render(request, template_name, context)
 
+
+@permission_required('funcionarios.can_change_Funcionario', login_url=views.autorizacao_negada)
 def editar_funcionario(request, pk):
     funcionario = get_object_or_404(Funcionario, pk=pk)
     if request.method == "POST":
@@ -57,7 +61,7 @@ def editar_funcionario(request, pk):
     return render(request, 'editar-funcionario.html', {'form': form })
 
 
-
+@permission_required('funcionarios.can_view_Funcionario', login_url=views.autorizacao_negada)
 def dados_funcionario(request, id):
     funcionario = get_object_or_404(Funcionario, id=id)
     context = {

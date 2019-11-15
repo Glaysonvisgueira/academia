@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render,get_object_or_404, redirect
-
+from django.contrib.auth.decorators import permission_required
+from core import views
 from clientes.models import Cliente
 from clientes.forms import ClienteForm
 
@@ -8,7 +9,7 @@ from clientes.forms import ClienteForm
 def is_valid_queryparam(param):
     return param != '' and param is not None 
 
-
+@permission_required('clientes.add_cliente', login_url=views.autorizacao_negada)
 def cadastrar_cliente(request):
     context = {}    
     template_name = 'cadastrar-cliente.html'
@@ -22,7 +23,7 @@ def cadastrar_cliente(request):
     context['form'] = form
     return render(request, template_name, context)
 
-
+@permission_required('clientes.view_cliente', login_url=views.autorizacao_negada)
 def listar_clientes(request):    
     clientes = Cliente.objects.all().order_by('id') 
     template_name = 'listar-clientes.html'
@@ -36,6 +37,8 @@ def listar_clientes(request):
 
     return render(request, template_name, context)
 
+
+@permission_required('clientes.view_cliente', login_url=views.autorizacao_negada)
 def dados_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     context = {
@@ -44,6 +47,8 @@ def dados_cliente(request, id):
     template_name = 'dados-cliente.html'
     return render(request, template_name, context)
 
+
+@permission_required('clientes.change_cliente', login_url=views.autorizacao_negada)
 def editar_cliente(request, pk):
     cliente = get_object_or_404(Cliente, pk=pk)   
     if request.method == "POST":
@@ -55,3 +60,10 @@ def editar_cliente(request, pk):
     else:
         form = ClienteForm(instance=cliente)
     return render(request, 'editar-cliente.html', {'form': form })
+
+
+@permission_required('clientes.delete_cliente', login_url=views.autorizacao_negada)
+def excluir_cliente(request, id):
+    cliente = get_object_or_404(Cliente, id=id)
+    cliente.delete()
+    return redirect(listar_clientes)

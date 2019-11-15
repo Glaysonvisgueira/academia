@@ -29,5 +29,6 @@ urlpatterns = [
     path('avaliacoes/', include('avaliacoes.urls')),
     path('cliente/mensalidades/', include('mensalidades.urls')),
     path('',views.home, name="home"),
+    path('autorização-negada/',views.autorizacao_negada, name="autorizacao_negada"),
     
 ]

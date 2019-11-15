@@ -69,7 +69,13 @@
 </table>
 <div >
        <a href="{% url 'listar_clientes' %}" class="btn btn-warning font-weight-bold">Voltar&nbsp;&nbsp;<img src="/static/feather/chevron-left.svg" alt="voltar" class="icone"></a>
+       {% if perms.clientes.change_cliente %}
        <a href="{% url 'editar_cliente' pk=cliente.pk %}" class="ml-2 btn btn-outline-warning font-weight-bold">Editar&nbsp;&nbsp;<img src="/static/feather/edit.svg" alt="editar" class="icone"></a>
+       {% endif %}
+       {% if perms.clientes.delete_cliente %}
+       <a href="{% url 'excluir_cliente' id=cliente.id %}" class="ml-2 btn btn-outline-warning font-weight-bold">Excluir&nbsp;&nbsp;<img src="/static/feather/delete.svg" alt="deletar" class="icone"></a>
+
+       {% endif %}
    </div>
      </div>
      <br/>
