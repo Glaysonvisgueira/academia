@@ -1,8 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
+from funcionarios.models import Funcionario
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from funcionarios.models import Funcionario
 
 
 
@@ -12,8 +12,8 @@ User = get_user_model()
 class RegistroForm(UserCreationForm):
 	username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
 	email = forms.EmailField(label='E-mail', widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-	password1 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-	password2 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off'}))
+	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off'}))
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
@@ -30,17 +30,16 @@ class RegistroForm(UserCreationForm):
 
 	
 
-class EditarContaForm(forms.ModelForm):
-    username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-    email = forms.EmailField(label='E-mail', widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+class AlterarSenhaAcesso(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off'}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off'}))
     
     class Meta:
         model = User
-        fields = ['username','email','first_name','last_name']
+        fields = ['old_password','new_password1','new_password2']
 
-
+'''
 class PasswordChangeForm(SetPasswordForm):#TODO consertar alteração de senha.
 	old_password = forms.CharField(max_length=150,widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm'}))
 	new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm'}))
@@ -48,4 +47,4 @@ class PasswordChangeForm(SetPasswordForm):#TODO consertar alteração de senha.
 
 	class Meta:
 		model = User
-		fields = ['old_password','new_password1','new_password2']
+		fields = ['old_password','new_password1','new_password2']'''

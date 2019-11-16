@@ -5,64 +5,6 @@
 
 
 
-<div class="container">
-
-    <div class="col-10 mx-auto alert alert-secondary">
-        <h3 class="font-weight-bold">Editar dados do usuário</h3><hr/>
-        <form method="POST">
-                 {% csrf_token %} 
-               
-                <div class="row">
-                    
-                     
-                 <div class="col-4"></div>          
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Nome de usuário</label>
-                         
-                    {{ form.username }}
-                    
-
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Email</label>
-                    {{ form.email }}
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Nome</label>
-                    {{ form.first_name }}
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Sobrenome</label>
-                    {{ form.last_name }}
-                </div>
-                
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-
-                    <div class="col-4">
-                        <button class="btn btn-warning btn-block font-weight-bold    mt-3" type="submit">Alterar</button>
-                    </div>
-                    </div>
-                </fieldset><br/>
-                <span class="text-danger font-weight-bold">
-                        {{ form.username.errors }} 
-                {{ form.email.errors }} 
-                {{ form.password1.errors }} 
-                {{ form.password2.errors }}
-
-                </span>
-            </form>
-            {% if success %}
-                <span class="font-weight-bold text-success">Os dados foram alterados com sucesso!</span>
-                {% endif%}
-            </div>
-  </div> 
 
 
 
