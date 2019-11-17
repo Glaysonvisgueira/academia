@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script type="text/javascript">  
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})  
+</script>
+
+
+
+<div class="container">
+	<h3 class="font-weight-bold ">Minha avaliação online</h3>
+	<hr/>
+	<span class="text-secondary">A nota máxima para cada aspecto é 5.</span>
+	<br/><br/>
+	<div class="row col-12">
+
+
+		<div class="card-deck text-center mx-auto">
+			<div class="card mb-4 box-shadow">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Ambiente</h4>
+				</div>
+				<div class="card-body">
+					{% for notas in avaliacao %}
+					<h1 class="card-title pricing-card-title">Nota: {{ notas.notaCriterio1}}</h1>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="card-deck text-center">
+			<div class="card mb-4 box-shadow">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Equipamentos</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">Nota: {{ notas.notaCriterio2}}</h1>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="card-deck text-center">
+			<div class="card mb-4 box-shadow">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Instrutores</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">Nota: {{ notas.notaCriterio3}}</h1>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="card-deck text-center">
+			<div class="card mb-4 box-shadow">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Atendimento</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">Nota: {{ notas.notaCriterio4}}</h1>
+					
+				</ul>
+			</div>
+		</div>
+
+
+
+		{% endfor%}
+
+
+
+	</div>
+
+</div>
+
+
+
+
+
+
+{%endblock %}
+
+

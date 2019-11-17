@@ -17,6 +17,14 @@ def listar_avaliacoes(request):
     }
     return render(request, template_name, context)
 
+@permission_required('avaliacoes.add_avaliacao', login_url=views.autorizacao_negada)
+def minha_avaliacao(request):    
+    avaliacao = Avaliacao.objects.filter(avaliador=request.user)
+    template_name = 'minha-avaliacao.html'
+    context = {
+        'avaliacao': avaliacao,
+    }
+    return render(request, template_name, context)
 
 
 @permission_required('avaliacoes.add_avaliacao', login_url=views.autorizacao_negada)

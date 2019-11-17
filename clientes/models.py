@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core import validators
 
@@ -47,6 +49,7 @@ def validar_telefone(telefone):
 
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)
+    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 	cpf = models.CharField('CPF:', max_length = 11, blank=False, validators=[validar_cpf])
 	rg = models.CharField('RG:', max_length = 14, blank=False)
 	nome = models.CharField('Nome:', max_length = 100, blank=False)

@@ -14,5 +14,15 @@ def listar_mensalidades(request, id):
     template_name = 'mensalidades-pendentes.html'
     return render(request, template_name, context)
 
+
+def minhas_mensalidades(request):
+	#mensalidade = Mensalidade.objects.filter(cliente=cliente.id)
+	template_name = 'minhas-mensalidades.html'
+	context = {
+	#	'mensalidade': mensalidade,
+	}
+	return render(request, template_name, context)
+
+
 def realizar_pagamento(request):
 	return render(request,'pagamento-cartao.html')

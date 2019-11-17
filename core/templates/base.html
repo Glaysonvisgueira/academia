@@ -96,6 +96,9 @@
               {% if perms.avaliacoes.view_avaliacao %}
               <a class="dropdown-item" href="{% url 'listar_avaliacoes' %}">Verificar avaliações</a>
               {% endif %}
+              {% if perms.avaliacoes.add_avaliacao %}
+              <a class="dropdown-item" href="{% url 'minha_avaliacao' %}">Verificar minha avaliação</a>
+              {% endif %}
             </div>
           </li>
           {% endif %}
@@ -104,7 +107,7 @@
               Opções do cliente
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Checar mensalidades</a>  
+              <a class="dropdown-item" href="{% url 'minhas_mensalidades' %}">Minhas mensalidades</a>  
               <a class="dropdown-item" href="#">Verificar minha avaliação</a>
               <a class="dropdown-item" href="#">Dashboard de frequência</a>      
             </div>

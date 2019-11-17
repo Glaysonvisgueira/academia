@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from core import views
+from django.core.paginator import Paginator
 from clientes.models import Cliente
 from clientes.forms import ClienteForm
 
@@ -23,7 +24,7 @@ def cadastrar_cliente(request):
     context['form'] = form
     return render(request, template_name, context)
 
-@permission_required('clientes.view_cliente', login_url=views.autorizacao_negada)
+'''@permission_required('clientes.view_cliente', login_url=views.autorizacao_negada)
 def listar_clientes(request):    
     clientes = Cliente.objects.all().order_by('id') 
     template_name = 'listar-clientes.html'
@@ -33,6 +34,20 @@ def listar_clientes(request):
     
     context = {
         'clientes': clientes, 
+    }
+
+    return render(request, template_name, context)
+'''
+
+@permission_required('clientes.view_cliente', login_url=views.autorizacao_negada)
+def listar_clientes(request):    
+    clientes = Cliente.objects.all().order_by('id') 
+    template_name = 'listar-clientes.html'
+    pesquisar = request.GET.get('pesquisar_cliente')
+    if is_valid_queryparam(pesquisar):
+        clientes = clientes.filter(nome__icontains=pesquisar) #Pesquisar por objetos que contém a string contida na variável pesquisar.
+    context = {
+        'clientes': clientes,
     }
 
     return render(request, template_name, context)
