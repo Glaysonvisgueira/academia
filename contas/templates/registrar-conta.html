@@ -1,85 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
- <!-- <h2>Sign up</h2>
-  <div class="container">
-    <div class="row mx-auto">
-  <form method="post">
-    <div class="col-12">
-        
-        {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-    </div>
-    
-  </form>
-  </div>
-</div>  -->
-
-<!--
-  <div class="container">
-        <form method="POST">
-                 {% csrf_token %} 
-               
-                <div class="row">
-                     
-                 <div class="col-4"></div>          
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Nome&nbsp;<span class="text-danger">*</span></label>
-                         
-                    {{ form.username }}
-
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Email&nbsp;<span class="text-danger">*</span></label>
-                    {{ form.email }}
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Senha&nbsp;<span class="text-danger">*</span></label>
-                    {{ form.password1 }}
-                </div>
-                <div class="col-4"></div> 
-                <div class="col-4"></div> 
-                <div class="col-4">
-                    <label class="font-weight-bold mt-2">Repita a senha&nbsp;<span class="text-danger">*</span></label>
-                    {{ form.password2 }}
-                </div>
-                
-                </div>
-
-                    <div class="col-4">
-                        <button class="btn btn-warning mt-3" type="submit">Cadastrar</button>
-                    </div>
-                </fieldset><br/>
-                <span class="text-danger">
-                        {{ form.username.errors }} 
-                {{ form.email.errors }} 
-                {{ form.password1.errors }} 
-                {{ form.password2.errors }}
-
-                </span>
-            </form>
-  </div> 
-
--->
 
 <div class="container">
-<br/>
-    <div class="col-6 mx-auto card border border-dark shadow-lg p-3 mb-5 bg-white rounded">
+<br/><br/>
+    <div class="col-6 mx-auto card  shadow-lg p-3 mb-5 bg-white rounded">
         <h3 class="mt-2 text-body font-weight-bold">Cadastrar novo usuário</h3>
         <hr style="border: 1px solid;" />
         <form method="POST">
@@ -104,7 +28,7 @@
 
         </span>
 
-        <button class="btn btn-success btn-block font-weight-bold    mt-3" type="submit">Cadastrar usuário
+        <button class="btn btn-success btn-block font-weight-bold    mt-3" type="submit">Cadastrar usuário</button>
         </form>
     </div>
 </div> 

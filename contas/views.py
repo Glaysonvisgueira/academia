@@ -4,25 +4,28 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, update_session_auth_hash, authenticate
 from django.contrib.auth import logout as app_logout         #Alteraando o nome da váriavel para não sobrescrever a váriavel built in logout do django
 from django.contrib.auth.decorators import login_required 
-from core import views
-from contas.forms import RegistroForm, AlterarSenhaAcesso
+from contas.forms import RegistroForm, AlterarSenhaAcesso, LoginForm
 
 
-def login(request):
+def login_page(request):
 	context = {}
 	template_name = 'login-page.html'
-	form = AuthenticationForm(request.POST)
 	if request.method == "POST":
-		username = request.POST("username")
-		password = request.POST("password")
-		usuario = authenticate(request, username=username, password=password)
+		form = LoginForm(request.POST)
+		#username = request.cleaned_data.get('username')
+		#password = request.cleaned_data.get('password')
+		username = request.POST["username"]
+		password = request.POST["password"]
+		usuario = authenticate(username=username, password=password)
 		if usuario is not None:
-			if usuario.is_active:
-				login(request, usuario)
-				return redirect(home)
+			login(request, usuario)
+			return redirect('http://localhost:8000/')
 	else:
-		form = AuthenticationForm()
-	return render(request,template_name,context)
+		form = LoginForm()
+	context = {
+		'form': form,
+	}
+	return render(request, template_name, context)
 
 
 def logout(request):

@@ -5,20 +5,30 @@
 
 
 
-
-
-
-
 <div class="container">
-	
+	<br/><br/>
 	<div class="row">
-		<form method="post">
-			{% csrf_token %}
-
-			{{ form }}
-
-			<div class="form-group">
-				<input type="submit" value="Enviar" class="btn btn-primary">
+		<div class="col-md-5 mx-auto">
+			<div class="card shadow-lg p-3 mb-5 bg-white rounded">
+				<div class="card-body">
+					<h4 class="card-title text-center font-weight-bold ">Sistema de login</h4>
+					<form method="post"> <hr style="border: 1px solid;" />
+						{% csrf_token %}
+						<label class="font-weight-bold">Usuário</label>
+						{{form.username}}
+						<label class="mt-2 font-weight-bold">Senha</label>
+						{{form.password}}	
+						{% if form.errors %}
+						<span class="text-danger alert alert-danger">
+							{{ form.username.errors }} 
+							{{ form.password.errors }} 
+						</span>
+						{% endif %}
+						<div>
+							<button class="btn btn-success btn-block font-weight-bold mt-3" type="submit">Login <img src="/static/feather/log-in.svg" alt="log-in" class="icone"></button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</div>

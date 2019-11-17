@@ -1,6 +1,6 @@
 from django import forms
 from funcionarios.models import Funcionario
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
@@ -39,6 +39,14 @@ class AlterarSenhaAcesso(PasswordChangeForm):
         model = User
         fields = ['old_password','new_password1','new_password2']
 
+
+class LoginForm(AuthenticationForm):
+	username = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false','placeholder':'Insira seu nome de usuário'}))
+	password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false','placeholder':'Insira a sua senha'}))
+
+	class Meta:
+		model = User
+		fields = ['username','password']
 '''
 class PasswordChangeForm(SetPasswordForm):#TODO consertar alteração de senha.
 	old_password = forms.CharField(max_length=150,widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm'}))

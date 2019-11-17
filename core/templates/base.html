@@ -75,8 +75,10 @@
               Gestão de contas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+              <a class="dropdown-item" href="{% url 'login_page' %}">Login</a>
+              {% if perms.auth.add_user %}
               <a class="dropdown-item" href="{% url 'registrar_conta' %}">Cadastrar acesso</a>
+              {% endif %}
               {% if user.is_authenticated %}
               <a class="dropdown-item" href="{% url 'alterar_senha' %}">Alterar senha</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>      
