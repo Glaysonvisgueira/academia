@@ -1,116 +1,116 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-	{% if user.is_authenticated %}
-	<div class="alert alert-success">
-		<span>
-			Olá <span class="badge badge-success">{{ user.username|upper }} </span> seja bem vindo ao sistema de gestão à academia de musculação!
-		</span>
-	</div>
-	{% endif %}
-<!--
-	<div class="jumbotron ">
 
+<!--<img src="/static/img/boxer-1600x1093.png" class="img-fluid bg" alt="Imagem responsiva">-->
+<br/><br/>
+<div class="container-fluid bg-img">
+  <br/>
+  <div class="container">
+   {% if user.is_authenticated %}
+   <div class="alert alert-success">
+    <span>
+     Olá <span class="badge badge-success">{{ user.username|upper }} </span> seja bem vindo ao sistema de gestão à academia de musculação!
+   </span>
+ </div>
+ {% endif %}
 
-		<h1 class="display-4">Seja bem vindo!</h1>
-		<p class="lead"><strong>Este website ainda está em contrução...</strong></p>
-		<hr class="my-4">
-		<p>Website de gestão de funcionários, clientes e pagamentos da academia Bee Strong!</p>
-	</div>
-
--->
-
-<div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Grátis</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Padrão</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">R$ 89,90<small class="text-muted"> Mensais</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Premium</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">R$ 89,90 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-          </div>
+ {% if not user.is_authenticated %}
+ <div class="card-deck mb-3 text-center">
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal"><span class="badge badge-pill badge-success">Gratuito!</span></h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">R$ 0,00 <small class="text-muted"></small></h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>10 dias de academia</li>
+        <li>Profissionais qualificados</li>
+        <li>Cancelamento a qualquer momento</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-success">Matricule-se gratuitamente</button>
+    </div>
+  </div>
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal"><span class="badge badge-pill badge-success">Padrão</span></h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">R$ 89,9<small class="text-muted"> Mensais</small></h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>1 Mês de academia</li>
+        <li>Profissionais qualificados</li>
+        <li>Acompanhamento de evolução física online</li>
+        <li>Pagamentos online via cartão e boleto bancário</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-success">Matricule-se já</button>
+    </div>
+  </div>
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal"><span class="badge badge-pill badge-danger">Premium</span></h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">R$ 109,9 <small class="text-muted">Mensais</small></h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>1 Mês de academia</li>
+        <li>Profissionais qualificados</li>
+        <li>Acompanhamento de evolução física online</li>
+        <li>Pagamentos online via cartão e boleto bancário</li>
+        <li>Acomnhamento com nutricionistas</li>
+        <li>Acompanhamento com fisioterapeutas</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-danger">Matricule-se já</button>
+    </div>
+  </div>
+</div>
+{% endif%}
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="container-flex mt-4">
+  <div class="col-11 mx-auto">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="/static/img/musculacao100x200.png" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title">Título do card</h5>
+          <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p>
+          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
         </div>
       </div>
-
-
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Cool stuff</a></li>
-              <li><a class="text-muted" href="#">Random feature</a></li>
-              <li><a class="text-muted" href="#">Team feature</a></li>
-              <li><a class="text-muted" href="#">Stuff for developers</a></li>
-              <li><a class="text-muted" href="#">Another one</a></li>
-              <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Resource</a></li>
-              <li><a class="text-muted" href="#">Resource name</a></li>
-              <li><a class="text-muted" href="#">Another resource</a></li>
-              <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Team</a></li>
-              <li><a class="text-muted" href="#">Locations</a></li>
-              <li><a class="text-muted" href="#">Privacy</a></li>
-              <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-          </div>
+      <div class="card">
+        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title">Título do card</h5>
+          <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
         </div>
-      </footer>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title">Título do card</h5>
+          <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p>
+          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+        </div>
+      </div>
     </div>
 
-
+  </div>
 </div>
-
 
 {% endblock %}

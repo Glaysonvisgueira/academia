@@ -1,15 +1,60 @@
 {% extends "base.html" %}
 {% block content %}
 <script type="text/javascript">  
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })  
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})  
 </script>
 
 
 
 <div class="container">
-  <h3 class="font-weight-bold">Minhas mensalidades</h3><hr/>
+	<h3 class="font-weight-bold">Minhas mensalidades</h3><hr/>
+
+	<div class="row col-12 mx-auto">
+		<table class="table table-sm table-bordered">
+			<thead>
+				<tr>
+
+					<th class="text-center">Ano</th>
+					<th class="text-center">Mês</th>
+					<th class="text-center">Valor</th>
+					<th class="text-center">Status</th>
+					<th class="text-center">Modo de pagamento</th>
+				</tr>
+			</thead>      
+
+			<tbody>
+				<tr>
+					{% for divida in mensalidade%}
+					<td class="text-center">{{ divida.ano }}</td>
+					<td class="text-center">{{ divida.mes }}</td>
+					<td class="text-center">R$ {{ divida.valor }}</td>
+					<td class="text-center">
+						{% if divida.status == "PAGO" %}
+						<span class="badge badge-success mx-auto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ divida.status }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						{% else %}
+						<span class="badge badge-danger">{{ divida.status }}</span>
+						{% endif%}
+					</td>
+					<td class="text-center">
+						<a href="{% url 'realizar_pagamento' %}" class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Pagar com cartão de crédito/débito"><img src="/static/feather/credit-card.svg" alt="credit-card" class="icone">
+						</a>
+						<a href="#" class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Gerar boleto bancário"><img src="/static/feather/file-text.svg" alt="file-text" class="icone">
+						</a>
+
+					</td>
+					{% endfor%}
+				</tr>
+			</tbody>
+		</tbody>
+
+
+
+	</table>
+
+</div>
+
 
 </div>
 
