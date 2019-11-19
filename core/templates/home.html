@@ -13,9 +13,13 @@
      Olá <span class="badge badge-success">{{ user.username|upper }} </span> seja bem vindo ao sistema de gestão à academia de musculação!
    </span>
  </div>
+ <br/><br/><br/><br/><br/><br/>
  {% endif %}
 
  {% if not user.is_authenticated %}
+ <br/>
+ <br/>
+ <br/>
  <div class="card-deck mb-3 text-center">
   <div class="card mb-4 box-shadow">
     <div class="card-header">
@@ -71,8 +75,8 @@
     </div>
   </div>
 </div>
-{% endif%}
-</div>
+
+</div>{% endif%}
 <br/>
 <br/>
 <br/>
@@ -81,36 +85,69 @@
 </div>
 </div>
 </div>
+
+
+
 <div class="container-flex mt-4">
-  <div class="col-11 mx-auto">
+  <h1 class="text-center font-weight-bold text-info font-italic">Ampla disponibilidade de modalidades</h1>
+  <hr/>
+  <div class="col-11 mx-auto mt-4">
     <div class="card-deck">
-      <div class="card">
-        <img class="card-img-top" src="/static/img/musculacao100x200.png" alt="Imagem de capa do card">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/boxe.jpg" alt="Imagem de capa do card">
         <div class="card-body">
-          <h5 class="card-title">Título do card</h5>
-          <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p>
-          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+          <h5 class="card-title font-weight-bold text-center text-body">Boxe</h5><hr/>
+          <p class="card-text text-justify text-secondary">O boxe ou pugilismo é um esporte de combate, no qual os lutadores usam apenas os punhos, tanto para a defesa, quanto para o ataque.</p>
         </div>
       </div>
-      <div class="card">
-        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/musculacao.jpg" alt="Imagem de capa do card">
         <div class="card-body">
-          <h5 class="card-title">Título do card</h5>
-          <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+          <h5 class="card-title font-weight-bold text-center text-body">Musculação</h5><hr/>
+          <p class="card-text text-justify text-secondary">A musculação é uma modalidade de treinamento físico realizado contra resistência de pesos externos, chamada também de treino resistido, que tem como objetivo o aumento hipertrofia muscular, ganho de força e potência.</p>
         </div>
       </div>
-      <div class="card">
-        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/zumba.jpg" alt="Imagem de capa do card">
         <div class="card-body">
-          <h5 class="card-title">Título do card</h5>
-          <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p>
-          <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+          <h5 class="card-title font-weight-bold text-center text-body">Zumba</h5><hr/>
+          <p class="card-text text-justify text-secondary">Zumba é uma modalidade aeróbica que traz mais disposição, modela o corpo e melhora a saúde e o humor de maneira descontraída e cheia de ritmo.</p>
         </div>
       </div>
     </div>
 
   </div>
 </div>
+<div class="container-flex">
+  <div class="col-11 mx-auto">
+    <div class="card-deck">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/ginastica.jpg" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold text-center text-body">Ginástica</h5><hr/>
+          <p class="card-text text-justify text-secondary">A ginástica é um conceito que engloba modalidades competitivas e não competitivas e envolve a prática de uma série de movimentos exigentes de força, flexibilidade e coordenação motora para fins únicos de aperfeiçoamento físico e mental.</p>
+        </div>
+      </div>
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/pilates.jpg" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold text-center text-body">Pilates</h5><hr/>
+          <p class="card-text text-justify text-secondary">Visa o total e completo controle e conexão entre corpo e mente, devolvendo e restaurando a saúde de indivíduos em condições patológicas assim como promovendo um aumento da qualidade de vida para pessoas saudáveis.</p>
+        </div>
+      </div>
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img class="card-img-top" src="/static/img/judo.jpg" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold text-center text-body">Judô</h5><hr/>
+          <p class="card-text text-justify text-secondary"> Os seus principais objetivos são fortalecer o físico, a mente e o espírito de forma integrada, além de desenvolver técnicas de defesa pessoal.</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<br/>
+<br/>
+
 
 {% endblock %}
