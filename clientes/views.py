@@ -10,6 +10,9 @@ from clientes.forms import ClienteForm
 def is_valid_queryparam(param):
     return param != '' and param is not None 
 
+def cadastro_sucesso_cliente(request):
+    return render(request,'sucesso-cadastro-cliente.html')
+
 @permission_required('clientes.add_cliente', login_url=views.autorizacao_negada)
 def cadastrar_cliente(request):
     context = {}    
@@ -18,7 +21,7 @@ def cadastrar_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('http://localhost:8000/') #TODO criar página de redirecionamento quando o cadastro for efetuado com sucesso.
+            return redirect('http://localhost:8000/cliente/cliente-cadastrado/') #TODO criar página de redirecionamento quando o cadastro for efetuado com sucesso.
     else:
         form = ClienteForm()
     context['form'] = form

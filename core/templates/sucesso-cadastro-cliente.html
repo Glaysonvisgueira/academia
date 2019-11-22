@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br><br><br><br><br><br>
+<div class="container card">
+<div class="container">
+
+<div class="row">
+	<h2 class="font-weight-bold text-dark mx-auto"> Cliente cadastrado com sucesso!</h2>
+</div>
+</div>
+<br>
+<div class="container">
+	<div class="col-3 mx-auto">
+<div class="row">
+	<a class="btn btn-success mx-auto" href="{% url 'cadastrar_cliente' %}" role="button">Cadastrar novo cliente</a>
+</div>
+<div class="row mt-2">
+	<a class="btn btn-success mx-auto" href="{% url 'home' %}" role="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Página inicial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	
+</div><br>
+</div></div></div>
+
+{% endblock %}

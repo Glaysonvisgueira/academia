@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404, redirect
-from django.db.models import Avg
+
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
 
@@ -7,6 +7,9 @@ from avaliacoes.models import Avaliacao, Criterio
 from avaliacoes.forms import AvaliacaoForm
 
 from core import views
+
+def avaliacao_realizada(request):
+	return render(request,'avaliacao-realizada.html')
 
 @permission_required('avaliacoes.view_avaliacao', login_url=views.autorizacao_negada)
 def listar_avaliacoes(request):    
@@ -32,6 +35,9 @@ def avaliar_criterio(request):
 	context = {}
 	template_name = 'avaliar.html'
 	user = User.objects.get(id=request.user.id)
+	verificar_usuario = Avaliacao.objects.filter(avaliador=user)
+	if verificar_usuario.exists():
+		return redirect(avaliacao_realizada) #Caso o usuário já exista, significa que uma avaliação já foi realizada.
 	if request.method == 'POST':
 		form = AvaliacaoForm(request.POST)
 		if form.is_valid():

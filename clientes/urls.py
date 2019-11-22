@@ -10,6 +10,7 @@ urlpatterns = [
     path('cadastrar-cliente/',views.cadastrar_cliente, name="cadastrar_cliente"),
     path('clientes-cadastrados/',views.listar_clientes, name="listar_clientes"),
     path('excluir-cliente/<int:id>',views.excluir_cliente, name="excluir_cliente"),
+    path('cliente-cadastrado/',views.cadastro_sucesso_cliente, name="cadastro_sucesso_cliente"),
     url(r'^matricula-(?P<id>\d+)/$', views.dados_cliente, name="dados_cliente"),
     url(r'^editar/matricula-(?P<pk>\d+)/$', views.editar_cliente, name="editar_cliente"),
     ]

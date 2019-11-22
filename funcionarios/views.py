@@ -69,3 +69,10 @@ def dados_funcionario(request, id):
     }
     template_name = 'dados-funcionario.html'
     return render(request, template_name, context)
+
+
+@permission_required('funcionarios.delete_funcionario', login_url=views.autorizacao_negada)
+def excluir_funcionario(request, id):
+    funcionario = get_object_or_404(Funcionario, id=id)
+    funcionario.delete()
+    return redirect(listar_funcionarios)

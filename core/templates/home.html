@@ -37,7 +37,7 @@
         <li>&nbsp;</li>
         <li>&nbsp;</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-success">Matricule-se gratuitamente</button>
+      <a href="{% url 'venha_ate_nos' %}" class="btn btn-lg btn-block btn-success">Matricule-se gratuitamente</a>
     </div>
   </div>
   <div class="card mb-4 box-shadow">
@@ -54,7 +54,7 @@
         <li>&nbsp;</li>
         <li>&nbsp;</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-success">Matricule-se já</button>
+      <a href="{% url 'venha_ate_nos' %}" class="btn btn-lg btn-block btn-success">Matricule-se já</a>
     </div>
   </div>
   <div class="card mb-4 box-shadow">
@@ -71,7 +71,7 @@
         <li>Acomnhamento com nutricionistas</li>
         <li>Acompanhamento com fisioterapeutas</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-danger">Matricule-se já</button>
+      <a href="{% url 'venha_ate_nos' %}" class="btn btn-lg btn-block btn-danger">Matricule-se já</a>
     </div>
   </div>
 </div>
@@ -148,6 +148,33 @@
 </div>
 <br/>
 <br/>
+<div class="container">
+ <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+      <small class="d-block mb-3 text-muted">&copy; 2019</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Redes sociais</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#"><img src="/static/feather/facebook.svg" alt="facebook" class="icone"> &nbsp;&nbsp;Facebook</a></li>
+        <li><a class="text-muted" href="#"><img src="/static/feather/instagram.svg" alt="instagram" class="icone"> &nbsp;&nbsp;Instagram</a></li>
+        <li><a class="text-muted" href="#"><img src="/static/feather/youtube.svg" alt="youtube" class="icone"> &nbsp;&nbsp;Youtube</a></li>
+        <li><a class="text-muted" href="#"><img src="/static/feather/twitter.svg" alt="twitter" class="icone"> &nbsp;&nbsp;Twitter</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Fale conosco</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">academia@academia.com.br</a></li>
+        <li><a class="text-muted" href="#">(086) XXXX-XXXX</a></li>
+      </ul>
+    </div>
+    
+  </div>
+</footer>
+</div>
 
 
 {% endblock %}
