@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+{{ form.media }}
+
+
+<br/><br/><br/>
+<div class="container">
+  <h3 class="font-weight-bold">Registro de frequência</h3><hr/>
+  <div class="row col-12 ">
+    <br/><br/><br/><br/><br/>
+    <form class="form-inline mx-auto">
+      <label>Data: &nbsp;</label>
+      {{ form.presente }}
+      <button type="submit" class="ml-2 btn btn-success"><strong>Registrar presença</button>
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

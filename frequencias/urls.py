@@ -6,6 +6,5 @@ from django.conf.urls import url
 from frequencias import views
 
 urlpatterns = [
-    
-    
+    path('realizar-chamada/',views.realizar_chamada, name="realizar_chamada"),    
 ]

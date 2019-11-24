@@ -9,3 +9,5 @@ def autorizacao_negada(request):    #Página a ser exibida quando o usuário ace
 
 def venha_ate_nos(request):
 	return render(request,'venha-ate-nos.html')
+
+	

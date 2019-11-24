@@ -41,7 +41,7 @@ class AlterarSenhaAcesso(PasswordChangeForm):
 
 
 class LoginForm(AuthenticationForm):
-	username = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false','placeholder':'Insira seu nome de usuário'}))
+	username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false','placeholder':'Insira seu nome de usuário'}))
 	password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','autocomplete':'off','oncopy':'return false','onpaste':'return false','ondrop':'return false','placeholder':'Insira a sua senha'}))
 
 	class Meta:

@@ -67,7 +67,7 @@
           </li>
           {% endif %}
 
-          {% if perms.clientes.view_cliente or perms.funcionarios.view_funcionario or perms.avaliacoes.view_avaliacao %}
+          {% if perms.clientes.view_cliente or perms.funcionarios.view_funcionario or perms.avaliacoes.view_avaliacao or perms.avaliacoes.add_avaliacao %}
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Relatórios
@@ -87,7 +87,7 @@
               {% endif %}   
             </li>
             {% endif %}
-            {% if perms.avaliacoes.add_avaliacao or perms.avaliacoes.view_avaliacao %} 
+            {% if perms.avaliacoes.add_avaliacao %} 
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Atividades
@@ -95,20 +95,12 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if perms.avaliacoes.add_avaliacao %}
                 <a class="dropdown-item" href="{% url 'avaliar_criterio' %}">Realizar avaliação online</a> 
-                <a class="dropdown-item" href="{% url 'minhas_mensalidades' %}">Verificar mensalidades e realizar pagamentos</a> {% endif %}       
+                <a class="dropdown-item" href="{% url 'minhas_mensalidades' %}">Verificar mensalidades e realizar pagamentos</a> {% endif %}  
+                <!--<a class="dropdown-item" href="{% url 'realizar_chamada' %}">Realizar chamada</a> -->
               </li>  
               {% endif%}
               
-            <!--
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Gestão de frequências
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Registrar frequência</a>
-                <a class="dropdown-item" href="#">Dashboard</a>
-              </div>
-            </li>  -->
+         
 
           </ul> 
           {% if not user.is_authenticated %}
